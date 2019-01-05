@@ -6,5 +6,5 @@ LABEL com.github.actions.icon="package"
 LABEL com.github.actions.color="black"
 RUN apt-get update && apt-get install -y --no-install-recommends
 
-ENTRYPOINT "npx"
-CMD ["semantic-release"]
+COPY "entrypoint.sh" "/entrypoint.sh"
+ENTRYPOINT ["/entrypoint.sh"]
