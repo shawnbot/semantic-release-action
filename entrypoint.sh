@@ -2,6 +2,11 @@
 
 set -e
 
+# alias NPM_TOKEN to NPM_AUTH_TOKEN, as semantic-release/npm expects the former
+if [ -n "$NPM_TOKEN" ]; then
+  export NPM_AUTH_TOKEN=$NPM_TOKEN
+fi
+
 if [ -n "$NPM_AUTH_TOKEN" ]; then
   # Respect NPM_CONFIG_USERCONFIG if it is provided, default to $HOME/.npmrc
   NPM_CONFIG_USERCONFIG="${NPM_CONFIG_USERCONFIG-"$HOME/.npmrc"}"
